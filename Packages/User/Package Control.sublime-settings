@@ -18,7 +18,7 @@
         "AutomaticPackageReloader",
         "AutoSetSyntax",
         "BetterFindBuffer",
-        "Bootstrap 4 Autocomplete",
+        "BootstrapAutocomplete",
         "BracketHighlighter",
         "Case Conversion",
         "CMake",
@@ -73,7 +73,6 @@
         "SelectUntil",
         "Sort Lines (Numerically)",
         "sublack",
-        "SublimeAStyleFormatter",
         "SublimeLinter",
         "SublimeLinter-contrib-markdownlint",
         "SublimeLinter-contrib-sublime-syntax",
@@ -88,6 +87,6 @@
     "repositories":
     [
         "https://raw.githubusercontent.com/jfcherng-sublime/ST-my-package-control/master/repository.json",
-        "https://raw.githubusercontent.com/facelessuser/sublime-channel/master/repositories.json",
+        // "https://raw.githubusercontent.com/facelessuser/sublime-channel/master/repositories.json",
     ],
 }

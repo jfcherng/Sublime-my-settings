@@ -1,12 +1,18 @@
 {
     // Debug logging
     "debug_enable": false,
+    // Global control of gutter icons.
+    "gutter_icons": false,
+    // Do the opposite of `show_unmatched` for the languages listed below
+    "show_unmatched_exceptions": [
+        "PHP",
+    ],
     // Character threshold to search
     "search_threshold": 20000,
     // Ignore threshold
     "ignore_threshold": false,
     // Set max number of multi-select brackets that will be searched automatically
-    "auto_selection_threshold": 20,
+    "auto_selection_threshold": 15,
     // Experimental: Creates a visible bar at the beginning of all lines between
     // multiline bracket spans.
     "content_highlight_bar": true,
@@ -18,7 +24,7 @@
     // that are shown when brackets are vertically off screen.
     // Specified line count is split to context before and after the target line.
     // So a value of 4 would give you two lines of context before and two lines after.
-    "popup_line_context": 6,
+    "popup_line_context": 3,
 
     // user_scope_brackets and user_brackets will be appended
     // to the tail of scope_brackets and brackets respectively
@@ -310,7 +316,7 @@
             "style": "round",
             "scope_exclude": ["string.quoted"],
             "language_filter": "blocklist",
-            "language_list": [],
+            "language_list": ["Plain Text"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true,
@@ -322,7 +328,7 @@
             "style": "round",
             "scope_exclude": ["string.quoted"],
             "language_filter": "blocklist",
-            "language_list": [],
+            "language_list": ["Plain Text"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true,
@@ -334,7 +340,7 @@
             "style": "round",
             "scope_exclude": ["string.quoted"],
             "language_filter": "blocklist",
-            "language_list": [],
+            "language_list": ["Plain Text"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true,
@@ -346,7 +352,7 @@
             "style": "round",
             "scope_exclude": ["string.quoted"],
             "language_filter": "blocklist",
-            "language_list": [],
+            "language_list": ["Plain Text"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true,
@@ -358,7 +364,7 @@
             "style": "round",
             "scope_exclude": ["string.quoted"],
             "language_filter": "blocklist",
-            "language_list": [],
+            "language_list": ["Plain Text"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true,
@@ -370,7 +376,7 @@
             "style": "round",
             "scope_exclude": ["string.quoted"],
             "language_filter": "blocklist",
-            "language_list": [],
+            "language_list": ["Plain Text"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true,
@@ -382,7 +388,7 @@
             "style": "round",
             "scope_exclude": ["string.quoted"],
             "language_filter": "blocklist",
-            "language_list": [],
+            "language_list": ["Plain Text"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true,
@@ -394,7 +400,7 @@
             "style": "round",
             "scope_exclude": ["string.quoted"],
             "language_filter": "blocklist",
-            "language_list": [],
+            "language_list": ["Plain Text"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true,
@@ -406,7 +412,7 @@
             "style": "round",
             "scope_exclude": ["string.quoted"],
             "language_filter": "blocklist",
-            "language_list": [],
+            "language_list": ["Plain Text"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true,

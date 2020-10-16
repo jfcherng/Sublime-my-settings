@@ -1,14 +1,13 @@
 {
     "cmd": ["python", "-u", "${file}"],
-    "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+    // "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
     "selector": "source.python",
     "target": "console_exec",
-    "env": {"PYTHONIOENCODING": "utf-8"},
-    "variants":
-    [
+    "env": { "PYTHONIOENCODING": "utf-8" },
+    "variants": [
         {
             "name": "Syntax Check",
-            "cmd": ["python", "-m", "py_compile", "${file}"],
+            "cmd": ["python", "-m", "py_compile", "${file}"]
         }
     ]
 }

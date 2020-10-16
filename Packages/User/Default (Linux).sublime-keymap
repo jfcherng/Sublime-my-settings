@@ -1,24 +1,9 @@
 [
-    // open console (ctrl+`) -> sublime.log_commands(True) -> check command names
-    /*******************
-     *   My commands   *
-     *******************/
     // { "keys": ["alt+q"], "command": "nop" },
-    {
-        "keys": ["alt+d", "alt+c"],
-        "command": "decorate_inline_comment",
-        "context": [{ "key": "selector", "operator": "equal", "operand": "comment" }]
-    },
-    { "keys": ["pause"], "command": "exec", "args": { "kill": true } },
-    { "keys": ["alt+a", "alt+r", "alt+i"], "command": "arithmetic" },
-    {
-        "keys": ["alt+g"],
-        "command": "run_input_cli_command",
-        "args": { "cwd": "", "initial_text": "git " },
-    },
     /**************************
      *    Built-in commands   *
      **************************/
+    { "keys": ["f5"], "command": "revert" },
     // force trim trailing white spaces
     {
         "keys": ["ctrl+t", "ctrl+s"],
@@ -185,7 +170,7 @@
     // goto definition
     { "keys": ["ctrl+shift+r"], "command": "goto_symbol_in_project" },
     { "keys": ["ctrl+alt+r"], "command": "navigate_to_line_via_quick_panel" },
-    // paste (set default to use smart paste)
+    // paste (use smart paste by default)
     { "keys": ["ctrl+v"], "command": "paste_and_indent" },
     { "keys": ["ctrl+shift+v"], "command": "paste" },
     // indent
@@ -279,6 +264,12 @@
             // jfcherng's align rule
             "user_input": "<-|=>|(?:[!=]?=|[.+*-/%&~|^!?:]|>>?|<<?)?=|>>+|<<+|(?<![\\d:]):(?![:/])/l1r1f1"
         }
+    },
+    // plugin: AutoSetSyntax
+    {
+        "keys": ["alt+a", "alt+s", "alt+s"],
+        "command": "auto_set_syntax",
+        "args": { "event_name": "user" },
     },
     // plugin: BracketHighlighter
     {
@@ -401,6 +392,7 @@
     {
         "keys": ["f12"],
         "command": "lsp_symbol_definition",
+        // "args": { "side_by_side": true },
         "context": [
             {
                 "key": "lsp.session_with_capability",
@@ -408,6 +400,17 @@
                 "operand": "definitionProvider"
             },
             { "key": "auto_complete_visible", "operator": "equal", "operand": false }
+        ]
+    },
+    {
+        "command": "lsp_code_actions",
+        "keys": ["alt+c", "alt+a"],
+        "context": [
+            {
+                "key": "lsp.session_with_capability",
+                "operator": "equal",
+                "operand": "codeActionProvider"
+            }
         ]
     },
     {
@@ -424,7 +427,10 @@
     {
         "keys": ["alt+s", "alt+h"],
         "command": "lsp_signature_help_show",
-        "context": [{ "key": "setting.lsp_active" }, { "key": "lsp.signature_help", "operator": "equal", "operand": 0 }]
+        "context": [
+            { "key": "setting.lsp_active" },
+            { "key": "lsp.signature_help", "operator": "equal", "operand": 0 }
+        ]
     },
     {
         "keys": ["alt+i"],
@@ -437,7 +443,10 @@
     {
         "keys": ["alt+k"],
         "command": "lsp_signature_help_next",
-        "context": [{ "key": "setting.lsp_active" }, { "key": "lsp.signature_help", "operator": "equal", "operand": 1 }]
+        "context": [
+            { "key": "setting.lsp_active" },
+            { "key": "lsp.signature_help", "operator": "equal", "operand": 1 }
+        ]
     },
     {
         "keys": ["alt+f", "alt+d"],
@@ -568,43 +577,26 @@
         "args": { "tool": "Fixer" },
         "context": [{ "key": "selector", "operator": "equal", "operand": "embedding.php | source.php" }]
     },
-    // plugin: Private Clipboard Manager
+    /*******************
+     *   My commands   *
+     *******************/
     {
-        "keys": ["alt+p", "alt+c"],
-        "command": "private_clipboard_manager",
-        "args": { "operation": "copy" },
+        "keys": ["alt+d", "alt+c"],
+        "command": "decorate_inline_comment",
+        "context": [{ "key": "selector", "operator": "equal", "operand": "comment" }]
+    },
+    { "keys": ["pause"], "command": "exec", "args": { "kill": true } },
+    { "keys": ["alt+a", "alt+r", "alt+i"], "command": "arithmetic" },
+    {
+        "keys": ["f5"],
+        "command": "cli_runner_show_result",
+        "context": [{ "key": "setting.is_from_cli_runner" }],
     },
     {
-        "keys": ["alt+p", "alt+x"],
-        "command": "private_clipboard_manager",
-        "args": { "operation": "cut" },
+        "keys": ["alt+g"],
+        "command": "cli_runner",
+        "args": { "initial_text": "git " },
     },
-    {
-        // choose which history to paste
-        "keys": ["alt+p", "alt+p"],
-        "command": "private_clipboard_manager",
-        "args": { "operation": "paste" },
-    },
-    {
-        // directly paste the latest history
-        "keys": ["alt+p", "alt+b"],
-        "command": "private_clipboard_manager",
-        "args": { "operation": "paste", "args": { "nth": -1 } },
-    },
-    {
-        // remove all items from the clipboard
-        "keys": ["alt+p", "alt+delete"],
-        "command": "private_clipboard_manager",
-        "args": { "operation": "clear" },
-    },
-    {
-        "keys": ["alt+p", "alt+d"],
-        "command": "private_clipboard_manager",
-        "args": { "operation": "debug" },
-    },
-    /**************************
-     *    Chained  commands   *
-     **************************/
     // add a new line outside the block comment
     {
         "keys": ["ctrl+enter"],
@@ -655,5 +647,5 @@
                 ["select_all"]
             ]
         }
-    }
+    },
 ]

@@ -3,59 +3,38 @@
     [
         "backend",
         "bmp",
+        "changelog",
         "config",
         "css",
+        "dev",
         "frontend",
         "gif",
         "github",
         "javascript",
         "jpg",
         "js",
+        "json",
         "Laravel",
         "linters",
         "namespace",
         "pipepline",
         "png",
+        "polyfill",
+        "readme",
         "Roundcube",
         "svg",
         "Symfony",
         "todo",
         "unittests",
     ],
-    "afp_blacklist_scopes":
-    [
-        "string.regexp",
-    ],
-    "afp_valid_scopes":
-    [
-        "text -text.html.basic",
-        "source string",
-        "source.css",
-        "source.less",
-        "source.sass",
-        "source.scss",
-    ],
-    "atomic_save": false,
     "auto_complete_cycle": true,
     "auto_complete_preserve_order": "none",
-    "auto_complete_selector": "source, meta.tag - punctuation.definition.tag.begin, text",
+    "auto_complete_selector": "(meta.tag | source | text) - comment",
     "auto_complete_triggers":
     [
         {
-            "characters": "<",
-            "selector": "text.html",
-        },
-        {
-            "characters": ".",
-            "selector": "source.python",
-        },
-        {
-            "characters": "$>:\\",
-            "selector": "source.php",
-        },
-        {
-            "characters": ".:>",
-            "selector": "source.c, source.c++",
+            "selector": "source.sass | source.scss",
+            "characters": "$",
         },
     ],
     "auto_find_in_selection": true,
@@ -84,7 +63,7 @@
     "caret_extra_top": 2,
     "caret_extra_width": 2,
     "caret_style": "solid",
-    "clear_selections": false, // https://github.com/sublimehq/sublime_text/issues/1022#issuecomment-530241903
+    "close_deleted_files": false,
     "close_find_after_find_all": true,
     "close_find_after_replace_all": true,
     "close_windows_when_empty": false,
@@ -94,7 +73,7 @@
     "dictionary": "Packages/Language - English/en_US-large.dic",
     "draw_minimap_border": true,
     "draw_shadows": true,
-    "draw_white_space": "all",
+    "draw_white_space": ["all"],
     "enable_tab_scrolling": false,
     "ensure_newline_at_eof_on_save": true,
     "file_exclude_patterns":
@@ -189,15 +168,15 @@
     "font_face": "Ubuntu Mono",
     "font_options":
     [
-        "bold",
-        "gdi",
-        "subpixel_antialias",
+        // "bold",
+        // "gdi",
     ],
-    "font_size": 12,
+    "font_size": 13,
     "gutter": true,
     "hide_pointer_while_typing": false,
     "highlight_find_results_in_scrollbar": true,
     "highlight_line": true,
+    "highlight_modified_tabs": true,
     "ignored_packages":
     [
         "RestructuredText",
@@ -237,8 +216,10 @@
         "branch-build/",
     ],
     "line_numbers": true,
+    "line_padding_bottom": 2,
     "match_brackets": false,
     "match_tags": false,
+    // "mini_auto_complete": true,
     "preview_on_click": "only_left",
     "rulers":
     [
@@ -251,6 +232,7 @@
     "show_encoding": true,
     "show_line_endings": true,
     "spell_check": false,
+    "tab_size": 4,
     "theme": "Adaptive.sublime-theme",
     "theme_font_options":
     [

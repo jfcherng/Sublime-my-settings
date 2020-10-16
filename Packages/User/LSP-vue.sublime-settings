@@ -1,8 +1,6 @@
 {
-    "languages": [
-        {
-            "languageId": "vue",
-            "document_selector": "text.html.vue",
-        },
-    ],
+    "settings": {
+        "vetur.validation.templateProps": true,
+        "vetur.experimental.templateInterpolationService": true,
+    },
 }

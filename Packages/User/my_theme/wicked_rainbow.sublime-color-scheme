@@ -144,6 +144,9 @@
         "Grey"       : "var(Grey600)"       ,
         "BlueGrey"   : "var(BlueGrey600)"   ,
         // built-in
+        // do not use perfect black as it may be the same background color
+        // with the one used in "add_region()" and cause failing to
+        // change the foreground color
         "--background": "var(Black)",
         "--foreground": "var(White)",
         // "--accent": "var(White)",
@@ -424,6 +427,11 @@
             "scope": "variable.scss",
         },
         {
+            "foreground": "var(Pink)",
+            "name": "CSS - Unit",
+            "scope": "constant.numeric.suffix.css",
+        },
+        {
             "font_style": "bold",
             "foreground": "var(Orange)",
             "name": "HTML - Other Tags",
@@ -598,8 +606,8 @@
         },
         {
             "foreground": "var(Pink)",
-            "name": "PHP - Function Return Type Separator",
-            "scope": "meta.function.return-type.php punctuation.separator.php",
+            "name": "PHP - Type Separator",
+            "scope": "punctuation.separator.type.union.php | punctuation.separator.type.intersection.php",
         },
         {
             "foreground": "var(--foreground)",
@@ -911,6 +919,15 @@
             "foreground": "var(--foreground)",
             "name": "SublimeLinter Gutter Mark",
             "scope": "sublimelinter.gutter-mark",
+        },
+        ///////////////////////////
+        // semantic highlihgting //
+        ///////////////////////////
+        {
+            // the background should be the same with color scheme's global background
+            "background": "#000101",
+            "name": "LSP semantic highlighting background color",
+            "scope": "meta.semantic-token.lsp",
         },
     ],
 }
