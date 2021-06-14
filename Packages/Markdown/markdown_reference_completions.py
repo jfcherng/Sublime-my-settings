@@ -1,8 +1,9 @@
+from functools import lru_cache
+from typing import Any, AnyStr, Dict, Iterable, List, Match, Optional, Sequence
 import re
 import sublime
 import sublime_plugin
-
-from typing import Any, AnyStr, Dict, Iterable, List, Match, Optional, Sequence
+import textwrap
 
 
 # test case
@@ -17,6 +18,7 @@ from typing import Any, AnyStr, Dict, Iterable, List, Match, Optional, Sequence
 """
 
 
+@lru_cache
 def truncate(s: str, max_length: int, ellipsis: str = "…") -> str:
     """
     @brief Truncate str to no more than max_length chars.
@@ -28,7 +30,9 @@ def truncate(s: str, max_length: int, ellipsis: str = "…") -> str:
     @return The truncated string.
     """
 
-    return s if len(s) <= max_length else s[: max_length - 1] + ellipsis
+    parts = textwrap.wrap(s, width=max_length)
+
+    return f"{parts[0]}{ellipsis}" if len(parts) > 1 else parts[0]
 
 
 def strip_pairs(s: str, pairs: Iterable[Sequence[str]], only_first: bool = True) -> str:
@@ -69,11 +73,23 @@ class MarkdownReferenceCompletions(sublime_plugin.EventListener):
     )
 
     re_linkable = re.compile(r"^(https?|ftps?)://", re.IGNORECASE)
-    ignored_commands = {"move", "drag_select", "left_delete", "right_delete", "delete_word"}
-    working_scope = (
-        "text.html.markdown meta.link.reference"
-        + "    (constant.other.reference.link.markdown | punctuation.definition.constant.end.markdown)"
+
+    ignored_commands = {
+        "move",
+        "drag_select",
+        "left_delete",
+        "right_delete",
+        "delete_word",
+    }
+
+    working_scopes = (
+        "text.html.markdown meta.link.reference constant.other.reference.link",
+        "text.html.markdown meta.link.reference punctuation.definition.constant.end",
     )
+
+    @property
+    def working_selector(self) -> str:
+        return "(" + ")|(".join(self.working_scopes) + ")"
 
     def on_post_text_command(self, view: sublime.View, command_name: str, args: Dict[str, Any]) -> None:
         cursor = view.sel()[0].b
@@ -82,7 +98,7 @@ class MarkdownReferenceCompletions(sublime_plugin.EventListener):
             return
 
         # auto invoke auto_complete
-        if view.match_selector(cursor, self.working_scope):
+        if view.match_selector(cursor, self.working_selector):
             view.run_command("auto_complete")
 
     def on_query_completions(
@@ -90,7 +106,7 @@ class MarkdownReferenceCompletions(sublime_plugin.EventListener):
     ) -> Optional[sublime.CompletionList]:
         cursor = locations[0]
 
-        if not view.match_selector(cursor, self.working_scope):
+        if not view.match_selector(cursor, self.working_selector):
             return None
 
         # make sure we're inside the reference name portion
